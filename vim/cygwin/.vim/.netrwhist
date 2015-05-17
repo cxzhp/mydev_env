@@ -1,0 +1,10 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =8
+let g:netrw_dirhist_1='/home/zhouping01/workspace/doing/verticalapp_service/verticalapp/app/verticalapp/dl/level1'
+let g:netrw_dirhist_2='/cygdrive/c/Users/zhouping01/Downloads'
+let g:netrw_dirhist_3='/home/zhouping01/downloads'
+let g:netrw_dirhist_4='/home/zhouping01/workspace/doing/mis_d_ji/wordlistn/app/wordlist/service'
+let g:netrw_dirhist_5='/home/zhouping01/workspace/doing/lecai/tbopen/app/tbopen/actions/v1/business'
+let g:netrw_dirhist_6='/cygdrive/c/Users/zhouping01/Downloads'
+let g:netrw_dirhist_7='/home/zhouping01/workspace/doing/webview/gamecenter'
+let g:netrw_dirhist_8='/home/zhouping01/workspace/doing/wireless/6.4/protobufidl/tbclient/getAddressList'
