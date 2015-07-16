@@ -1,0 +1,13 @@
+#在vi或less之类退出时完全恢复到原屏幕的内容 
+altscreen on
+#显示屏幕下方状态栏
+hardstatus alwayslastline
+#状态栏的显示信息定制
+hardstatus string "%{= kG}[%{G}{g}][%= %{= kw}%?%-Lw%?%{r}(%{W}%n*%f%t%?(%u)%?%{r})%{w}%?%+Lw%?%?%= %{g}][%{B}%Y-%m-%d%{W} %c:%s%{g}]"
+#默认开启的窗口，格式为： screen -t {窗口标题} {窗口数字编号(可选)} {screen之后执行的命令}）
+#快捷键绑定
+bindkey -k k1 select 1 #F1 to select 1
+bindkey -k k9 screen #F9 to new a screen
+bindkey -k k; detach #F10 to detach
+bindkey -k F1 prev #F11 to previous
+bindkey -k F2 next #F12 to next
