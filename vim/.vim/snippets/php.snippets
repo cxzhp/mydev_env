@@ -1,0 +1,1055 @@
+snippet php
+	<?php
+	${1}
+	?>
+snippet ec
+	echo "${1:string}"${2};
+snippet inc
+	include '${1:file}';${2}
+snippet inc1
+	include_once '${1:file}';${2}
+snippet req
+	require '${1:file}';${2}
+snippet req1
+	require_once '${1:file}';${2}
+# $GLOBALS['...']
+snippet globals
+	$GLOBALS['${1:variable}']${2: = }${3:something}${4:;}${5}
+snippet $_ COOKIE['...']
+	$_COOKIE['${1:variable}']${2}
+snippet $_ ENV['...']
+	$_ENV['${1:variable}']${2}
+snippet $_ FILES['...']
+	$_FILES['${1:variable}']${2}
+snippet $_ Get['...']
+	$_GET['${1:variable}']${2}
+snippet $_ POST['...']
+	$_POST['${1:variable}']${2}
+snippet $_ REQUEST['...']
+	$_REQUEST['${1:variable}']${2}
+snippet $_ SERVER['...']
+	$_SERVER['${1:variable}']${2}
+snippet $_ SESSION['...']
+	$_SESSION['${1:variable}']${2}
+# Start Docblock
+snippet /*
+	/**
+	 * ${1}
+	 **/
+# Class - post doc
+snippet doc_cp
+	/**
+	 * ${1:undocumented class}
+	 *
+	 * @package ${2:default}
+	 * @author ${3:`g:snips_author`}
+	**/${4}
+# Class Variable - post doc
+snippet doc_vp
+	/**
+	 * ${1:undocumented class variable}
+	 *
+	 * @var ${2:string}
+	 **/${3}
+# Class Variable
+snippet doc_v
+	/**
+	 * ${3:undocumented class variable}
+	 *
+	 * @var ${4:string}
+	 **/
+	${1:var} $${2};${5}
+# Class
+snippet doc_c
+	/**
+	 * ${3:undocumented class}
+	 *
+	 * @packaged ${4:default}
+	 * @author ${5:`g:snips_author`}
+	 **/
+	${1:}class ${2:}
+	{${6}
+	} // END $1class $2
+# Constant Definition - post doc
+snippet doc_dp
+	/**
+	 * ${1:undocumented constant}
+	 **/${2}
+# Constant Definition
+snippet doc_d
+	/**
+	 * ${3:undocumented constant}
+	 **/
+	define(${1}, ${2});${4}
+# Function - post doc
+snippet doc_fp
+	/**
+	 * ${1:undocumented function}
+	 *
+	 * @return ${2:void}
+	 * @author ${3:`g:snips_author`}
+	 **/${4}
+# Function signature
+snippet doc_s
+	/**
+	 * ${4:undocumented function}
+	 *
+	 * @return ${5:void}
+	 * @author ${6:`g:snips_author`}
+	 **/
+	${1}function ${2}(${3});${7}
+# Function
+snippet doc_f
+	/**
+	 * ${4:undocumented function}
+	 *
+	 * @return ${5:void}
+	 * @author ${6:`g:snips_author`}
+	 **/
+	${1}function ${2}(${3})
+	{${7}
+	}
+# Header
+snippet doc_h
+	/**
+	 * ${1}
+	 *
+	 * @author ${2:`g:snips_author`}
+	 * @version ${3:$Id$}
+	 * @copyright ${4:$2}, `strftime('%d %B, %Y')`
+	 * @package ${5:default}
+	 **/
+	
+	/**
+	 * Define DocBlock
+	 *//
+# Interface
+snippet doc_i
+	/**
+	 * ${2:undocumented class}
+	 *
+	 * @package ${3:default}
+	 * @author ${4:`g:snips_author`}
+	 **/
+	interface ${1:}
+	{${5}
+	} // END interface $1
+# class ...
+snippet class
+	/**
+	 * ${1}
+	 **/
+	class ${2:ClassName}
+	{
+		${3}
+		function ${4:__construct}(${5:argument})
+		{
+			${6:// code...}
+		}
+	}
+# define(...)
+snippet def
+	define('${1}'${2});${3}
+# defined(...)
+snippet def?
+	${1}defined('${2}')${3}
+snippet wh
+	while (${1:/* condition */}) {
+		${2:// code...}
+	}
+# do ... while
+snippet do
+	do {
+		${2:// code... }
+	} while (${1:/* condition */});
+snippet if
+	if (${1:/* condition */}) {
+		${2:// code...}
+	}
+snippet ife
+	if (${1:/* condition */}) {
+		${2:// code...}
+	} else {
+		${3:// code...}
+	}
+	${4}
+snippet else
+	else {
+		${1:// code...}
+	}
+snippet elseif
+	elseif (${1:/* condition */}) {
+		${2:// code...}
+	}
+# Tertiary conditional
+snippet t
+	$${1:retVal} = (${2:condition}) ? ${3:a} : ${4:b};${5}
+snippet switch
+	switch ($${1:variable}) {
+		case '${2:value}':
+			${3:// code...}
+			break;
+		${5}
+		default:
+			${4:// code...}
+			break;
+	}
+snippet case
+	case '${1:value}':
+		${2:// code...}
+		break;${3}
+snippet for
+	for ($${2:i} = 0; $$2 < ${1:count}; $$2${3:++}) {
+		${4: // code...}
+	}
+snippet foreach
+	foreach ($${1:variable} as $${2:key}) {
+		${3:// code...}
+	}
+snippet fun
+	${1:public }function ${2:FunctionName}(${3}){
+		${4:// code...}
+	}
+# $... = array (...)
+snippet array
+	$${1:arrayName} = array('${2}' => ${3});${4}
+snippet zhp_tb_ser
+		//Tieba_Service:call
+		$strServiceName = '${1:serviceName}';
+		$strMethod = '${2:methodName}';
+
+		$arrInput = array(
+						  '${3:inputKey}' => $${4:inputVal},
+						  );
+
+		// 打印日志 记录传递给Service内容
+		Bingo_Log::debug(sprintf('talk to servicename:[%s] method:[%s] input:[%s] ',$strServiceName,$strMethod, serialize($arrInput) ) );
+
+		//和service交互
+		Bingo_Timer::start("{$strServiceName}_{$strMethod}");
+		$arrOutput = Tieba_Service::call($strServiceName,$strMethod, $arrInput);
+		//$arrOutput = Molib_Tieba_Service::call($strServiceName,$strMethod, $arrInput);
+		//$arrOutput = _ Tieba_Service::call($strServiceName,$strMethod, $arrInput,null,null,'post','php','gbk','local');
+		//$arrOutput = _ Tieba_Service::call($strServiceName,$strMethod, $arrInput,null,null,'post','php','utf-8','local');
+		Bingo_Timer::end("{$strServiceName}_{$strMethod}");
+
+		if (false === $arrOutput ) {
+			Bingo_Log::warning(sprintf('Failed to call servicename:[%s] method:[%s][user_name:%s]',	$strServiceName,$strMethod, serialize($arrInput) ));
+			return false;
+			//throw new Exception('Failed to call service.',Tieba_Errcode::ERR_CALL_SERVICE_FAIL);
+		}
+		//check err_no
+		if ( isset($arrOutput['errno']) && (0 == intval($arrOutput['errno'])) ) {
+			//success nothing to do
+			$arrRet = $arrOutput;
+
+		} else {
+			//err,print log
+			Bingo_Log::warning(sprintf('Err to call servicename:[%s] method:[%s] [input:%s] [output:%s]',$strServiceName,$strMethod,serialize($arrInput),serialize($arrOutput)));
+			return false;
+			//throw new Exception('err to call service.',$arrOutput['errno']);
+		}
+snippet zhp_tb_dl
+		//call Dl
+		$strClassName = '${1:className}';
+		$strMethod = '${2:methodName}';
+
+		$arrInput = array(
+						  '${3:inputKey}' => $${4:inputVal},
+						  );
+		Bingo_Log::debug(sprintf('talk to call dl:[%s] method:[%s] [input:%s]',	$strClassName , $strMethod, serialize($arrInput)));
+
+		$arrOutput = call_user_func_array(array($strClassName,$strMethod), array($arrInput));
+
+		if (false === $arrOutput ) {
+			Bingo_Log::warning(sprintf('failed to call dl:[%s] method:[%s] ',	$strClassName , $strMethod));
+			return self::_errRet(Tieba_Errcode::ERR_CALL_SERVICE_FAIL);
+			//return false;
+		}
+		//check err_no
+		if ( isset($arrOutput['errno']) && (0 == intval($arrOutput['errno'])) ) {
+			//pass
+			return true;
+		} else {
+			//failure,print log
+			Bingo_Log::warning(sprintf('err to call dl:[%s] method:[%s] [input:%s] [output:%s]',$strClassName,$strMethod,serialize($arrInput),serialize($arrOutput)));
+			return $arrOutput;
+			//return false;
+		}
+snippet zhp_sql_sel
+		//select query
+		//check para
+		$arrCheckPara = array(
+							  '${1:checkPara}',
+							 );
+		if(false === self::_checkParam($arrInput,$arrCheckPara)){
+			Bingo_Log::warning(sprintf('check para fail, arr_input[%s] arr_check_para[%s]', serialize($arrInput), serialize($arrCheckPara)));
+			return self::_errRet(Tieba_Errcode::ERR_PARAM_ERROR); 
+		}
+
+
+		//get sql
+		$strSqlTpl = "select now() as now_time ,status from noah_locks where ${2:field} = {${3:field}:n}";
+		$arrSqlInput = $arrInput;
+		$strSql = self::getSql($arrSqlInput,$strSqlTpl);
+		if(false === $strSql){
+			Bingo_Log::warning(sprintf('getSql fail, SQL[%s] input[%s]', $strSqlTpl, serialize($arrSqlInput)));
+			return self::_errRet(Tieba_Errcode::ERR_DB_QUERY_FAIL);
+		}
+
+
+		$db = self::_getDB();
+		if( !$db ){
+			Bingo_Log::warning('getDB fail.');
+			return self::_errRet(Tieba_Errcode::ERR_DB_CONN_FAIL);
+		}
+
+		//query sql
+		Bingo_Log::debug($strSql);
+		$res = $db->query($strSql);
+		if( false === $res ){
+			Bingo_Log::warning("sql:".$strSql." errno:".$db->errno()."  error:".$db->error());
+			return self::_errRet(Tieba_Errcode::ERR_DB_QUERY_FAIL);
+		}
+
+		$arrRow= $ret[0];
+snippet zhp_checkPara
+	//checkPara class
+	/*
+	 * @brief: 检查输入参数是否具备
+	 *
+	 * @param:
+	 *   $arrInput 调用者的输入参数
+	 *   $arrCheckKey = array('user_id', 'offset', 'req_num'), 检查那些key
+	 * @return:
+	 *   succ: true
+	 *   fail: false
+	 */
+	private function _checkParam($arrInput, $arrCheckKey) {
+		foreach ($arrCheckKey as $key) {
+			if (false === $arrInput[$key] || !isset($arrInput[$key]) ) {
+				Bingo_Log::warning("checkPara error. [$key] is false.");
+				return false;
+			}
+		}
+		return true;
+	}
+snippet zhp_getSql
+	//getSql
+	/**
+	 * @brief 拼sql语句
+	 *
+	 * @param
+	 *   $arrInput 调用者的输入参数
+	 *   $strTpl SQL模板
+	 * @return:
+	 *   succ: $strSql
+	 *   fail: false
+	 **/
+	public static function getSql($arrInput, $strTpl) {
+
+		$db = self::_getDB();
+		if( !$db ){
+			Bingo_Log::warning(sprintf('getDB fail while getSql() return false, SQL[%s] input[%s]', $strTpl, serialize($arrInput)));
+			return false;
+		}
+
+		$template = self::_getSqlTemplate($db);
+		if(!$template){
+			Bingo_Log::warning(sprintf('getSqlTemplate fail while getSql() return false, SQL[%s] input[%s]', $strTpl, serialize($arrInput)));
+			return false;
+		}
+
+		// get sql
+		$template->prepare($strTpl);
+
+		//mysql escape string
+		foreach($arrInput as $key => $val){
+			$arrInput[$key] = $db->escapeString($val);
+		}
+
+		if ($template->bindParam($arrInput, null, false) === false) {
+			Bingo_Log::warning(sprintf('getSql fail while bindParam() return false, SQL[%s]', $strTpl));
+			return false;
+		}
+		$strSql = $template->getSql();
+		if (null === $strSql) {
+			Bingo_Log::warning(sprintf('getSql fail while getSql() return false, SQL[%s] input[%s]', $strTpl, serialize($arrInput)));
+			return false;
+		}
+		return $strSql;
+	}
+snippet zhp_getSqlTpl
+	//SqlTpl
+	private static $_template = null//move to top of class, add ";" at the end
+	/**
+	 * @brief get sql_template obj.
+	 * @return: obj of Bd_Db_SQLTemplate, or null if db connect fail.
+
+	 **/		
+	private static function _getSqlTemplate($objTbMysql){
+
+		if(null == self::$_template){
+			if($objTbMysql && $objTbMysql->isConnected()) {
+				self::$_template = new Bd_Db_SQLTemplate($objTbMysql);
+			} else {
+				Bingo_Log::warning("db connect for SqlTemplate fail.");
+				return null;
+			}
+		}
+
+		return self::$_template;
+
+	}
+snippet zhp_try_catch
+		//try_catch
+		try{//采用事务，保证两条sql都能插进去
+
+			$db->startTransaction();
+
+			//check para
+			$arrCheckPara = array(
+								  'need_fill',
+								 );
+			if(false == self::_checkParam($req,$arrCheckPara)){
+				Bingo_Log::warning(sprintf('check para fail, arr_input[%s] arr_check_para[%s]', serialize($req), serialize($arrCheckPara)));
+				$arrRet = self::_errRet(Tieba_Errcode::ERR_PARAM_ERROR); 
+				throw new Exception($arrRet['errmsg'],$arrRet['errno']);
+			}
+
+
+			//get sql
+			$strSqlTpl = "replace into noah_locks set need_fill = {need_fill:n}";
+			$arrSqlInput = $req;
+			$arrSqlInput['need_fill'] = need_fill;
+			$strSql = self::getSql($arrSqlInput,$strSqlTpl);
+			if(false == $strSql){
+				Bingo_Log::warning(sprintf('getSql fail, SQL[%s] input[%s]', $strSqlTpl, serialize($arrSqlInput)));
+				return self::_errRet(Tieba_Errcode::ERR_DB_QUERY_FAIL);
+			}
+
+			$db = self::_getDB();
+			if( !$db ){
+				Bingo_Log::warning('getDB fail.');
+				$arrRet = self::_errRet(Tieba_Errcode::ERR_DB_CONN_FAIL);
+				throw new Exception($arrRet['errmsg'],$arrRet['errno']);
+			}
+
+			//query sql
+			Bingo_Log::debug($strSql);
+			$res = $db->query($strSql);
+
+			if( false === $res ){
+				Bingo_Log::warning("sql:".$strSql." errno:".$db->errno()."  error:".$db->error());
+				$arrRet = self::_errRet(Tieba_Errcode::ERR_DB_QUERY_FAIL);
+				throw new Exception($arrRet['errmsg'],$arrRet['errno']);
+			}
+
+
+			//get sql
+			$strSqlTpl = "insert into push_logs set need_fill = {need_fill:s}";
+			$arrSqlInput['need_fill'] = need_fill;
+
+			//query sql
+			Bingo_Log::debug($strSql);
+			$res = $db->query($strSql);
+
+			if( false === $res ){
+				Bingo_Log::warning("sql:".$strSql." errno:".$db->errno()."  error:".$db->error());
+				$arrRet = self::_errRet(Tieba_Errcode::ERR_DB_QUERY_FAIL);
+				throw new Exception($arrRet['errmsg'],$arrRet['errno']);
+			}
+
+			$db->commit();
+
+		}catch(Exception $e){
+			return self::_errRet($e->getCode());
+		}
+snippet zhp_checkpara
+		//check para
+		$arrCheckPara = array(
+							  '${1:checkpara}',
+							 );
+		if(false == self::_checkParam($arrInput,$arrCheckPara)){
+			Bingo_Log::warning(sprintf('check para fail, arr_input[%s] arr_check_para[%s]', serialize($arrInput), serialize($arrCheckPara)));
+			return self::_errRet(Tieba_Errcode::ERR_PARAM_ERROR); 
+		}
+snippet zhp_checkpara_misui
+		//check para
+		$arrCheckPara = array(
+							  '${1:checkpara}',
+							 );
+		if(false == self::_checkParam($arrInput,$arrCheckPara)){
+			Bingo_Log::warning(sprintf('check para fail, arr_input[%s] arr_check_para[%s]', serialize($arrInput), serialize($arrCheckPara)));
+			$arrRet = self::_errRet(Tieba_Errcode::ERR_PARAM_ERROR); 
+			return self::returnJson($arrRet['errno'],$arrRet['errmsg']);
+		}
+snippet zhp_returnjson
+	//return json
+	//$arrRet = self::_errRet(Tieba_Errcode::ERR_PARAM_ERROR); 
+	//return self::_returnJson($arrRet['errno'],$arrRet['errmsg']);
+	//return self::_returnJson($arrOutput['errno'],$arrOutput['errmsg']);
+	//return self::_returnJson($arrRet['errno'],$arrRet['errmsg'],$arrData);
+	//return self::_returnJson(Tieba_Errcode::ERR_SUCCESS,'success',$arrData);
+	private  function _returnJson($errno,$errmsg,$data=array()){
+
+		$this->_arrTplVar['errno']  = $errno;
+		$this->_arrTplVar['errmsg'] = $errmsg;
+		$this->_arrTplVar['data']   = $data;
+
+		Bingo_Page::getView()->setOnlyDataType("json");
+		Bingo_Page::setTpl("simpledata/Page.php");///home/forum/tieba-odp/template/mis/control/simpledata/Page.php
+		return true;
+	}
+snippet zhp_returnHtml
+	//return html
+	//return self::_returnHtml($arrRet['errno'],$arrRet['errmsg']);
+	//return self::_returnHtml($arrRet['errno'],$arrRet['errmsg'],$arrData);
+	//return self::_returnHtml(Tieba_Errcode::ERR_SUCCESS,'success',$arrData);
+	private  function _returnHtml($errno,$errmsg){
+	
+		$this->_arrTplVar['errno']  = $errno;
+		$this->_arrTplVar['errmsg'] = $errmsg;
+
+		echo $errmsg;
+		exit();
+	}
+snippet zhp_errret
+	//method _errRet
+	protected static function _errRet($errno,$errmsg=''){
+		if(!empty($errmsg)){
+			return array(       
+				'error_code' => $errno,
+				'error_msg' => $errmsg,
+			);
+		}else{
+			return array(       
+				'error_code' => $errno,
+				'error_msg' => Tieba_Error::getErrmsg($errno),
+			);
+		}
+	}
+snippet zhp_input_notice
+		//push notice
+		foreach($arrInput as $key => $val){
+			if(is_string($val)){
+				Bingo_Log::pushNotice($key,$val);
+			}else{
+				Bingo_Log::pushNotice($key,serialize($val));
+			}
+		}
+snippet zhp_redis
+		//redis sample
+		$redis = new Bingo_Cache_Redis ( self::APP_NAME );
+		if (! $redis->isEnable ()) {
+			Bingo_Log::warning ( "init redis failed. [" . serialize( $redis ) . "]" );
+			return self::_errRet( Tieba_Errcode::ERR_BUSI_CONN_REDIS_FAIL);
+		}
+
+		$strYmd 	= $req['ymd'];
+		$intUserid 	= $req['user_id'];	
+		$intNum 	= $req['num'];	
+		$strRedisKey = self::KEY_QIAN_CHANCE_NUM_PRE."_".$strYmd."_".$intUserid;
+		$input = array(
+					   'key' => $strRedisKey,
+					  );
+		$retRedis = $redis->GET($input);
+		if(0 === $retRedis['err_no']){
+			$arrRet = self::_errRet( Tieba_Errcode::ERR_SUCCESS);
+			$arrRet['res']['num'] = $retRedis['ret'][$strRedisKey];
+			return $arrRet;
+		}else{
+			Bingo_Log::warning ( __FUNCTION__." error. [input:".serialize($input)."] [ret_redis:" . serialize( $retRedis) . "]" );
+			return self::_errRet( Tieba_Errcode::ERR_BUSI_USE_REDIS_ERR);
+			
+		}
+snippet zhp_arrret
+	$arrRet = self::_errRet(Tieba_Errcode::ERR_SUCCESS);
+	$arrRet['ret']['succ_num'] = $intSucc;
+	$arrRet['ret']['fail_num'] = $intFail;
+
+	return $arrRet;
+snippet zhp_returnerr
+		private static function _returnErr($intErrno,$strErrmsg,$arrRet=array()){
+			$this->_error($intErrno,$strErrmsg);
+			$this->_objResponse->setOutData($arrRet);
+			return false;
+		}
+snippet zhp_gb2u
+	public static function gb2u($str){
+		return Bingo_Encode::convert($str, Bingo_Encode::ENCODE_GBK,Bingo_Encode::ENCODE_UTF8);
+	}
+snippet zhp_u2gb
+	private static function _u2gb($str){
+		return Bingo_Encode::convert($str, Bingo_Encode::ENCODE_GBK,Bingo_Encode::ENCODE_UTF8);
+	}
+snippet zhp_multi_call
+		//app/client-mocencourage/libs/util/Multicall.php
+		private $_strMultiCallKey = 'pay_member';
+		private $_objCaller = null;
+
+		private function _getCaller(){
+			if(null == $this->_objCaller){
+				$this->_objCaller = new Libs_Util_Multicall($this->_strMultiCallKey);
+			}
+			return $this->_objCaller;
+		}
+
+		public function _execute()
+		{
+
+			$intUserId      = $this->_objRequest->getCommonAttr('user_id', 0);
+
+			$this->_getCaller();
+			if ( !is_object($this->_objCaller) ){
+				Bingo_Log::warning('init service object failure');
+				$arrRet = array();
+				$arrRet['user']         =   array();
+				$arrRet['g_info']       =   array();
+				$arrRet['g_right']      =   array();
+
+				$this->_objResponse->setOutData($arrRet);
+				return true;
+			}
+
+			//获得用户信息(pre)
+			$this->_preUserInfo($intUserId);
+
+			$this->_objCaller->call();
+
+			$arrTimer = $this->_objCaller->getMultiTimer();
+			foreach ($arrTimer as $strService => $arrItem) {
+				$arrService = explode(':', $strService);
+				$strLogKey  = 'mcall_'.$this->_strMultiCallKey.'_'.$arrService[0].'_'.$arrService[1];
+				// RAl timer is msec, convert it to usec
+				$this->_objResponse->addLog($strLogKey, $arrItem['total_cost']*1000);
+			}
+
+			//获得用户信息(build)
+			$arrUserInfo = $this->_buildUserInfo();
+
+			$arrRet = array();
+			$arrRet['user']         =   $arrUserInfo;
+			$this->_objResponse->setOutData($arrRet);
+
+		}
+
+		public function _preUserInfo($intUserId){
+		
+			$arrInputUser = array(
+								'user_id' => $intUserId,
+								);
+			$arrMultiCall = array(
+								'serviceName'=>'user',
+								'method'    => 'getUserData',
+								'input'    => $arrInputUser,
+								);
+			$this->_objCaller->register($arrMultiCall['serviceName'], $arrMultiCall['method'], $arrMultiCall['input']);
+		}
+
+		public function _buildUserInfo(){
+
+			$arrTmp = array();
+			$strServiceName = 'user';
+			$strMethod      = 'getUserData';
+			$arrOutput = $this->_objCaller->getResult($strServiceName, $strMethod);
+			if ( isset($arrOutput['errno']) && (0 == intval($arrOutput['errno'])) ) {
+				$arrTmp = $arrOutput['user_info'][0];
+				return $arrTmp;
+			} else {
+				//err,print log
+				$arrInput = $this->_objCaller->getInput($strServiceName,$strMethod);
+				Bingo_Log::warning(sprintf('Err to call servicename:[%s] method:[%s] [input:%s] [output:%s]',$strServiceName,$strMethod,serialize($arrInput),serialize($arrOutput)));
+				return array();
+			}
+		}
+snippet zhp_fetchurl
+	private static function _fetchUrl($strUrl,$arrParams=array(),$strMethod='get'){
+
+		$url = $strUrl;
+		$params = $arrParams;
+
+		$httpproxy = Orp_FetchUrl::getInstance(array('timeout' =>30000,'conn_timeout' =>10000,'max_response_size'=> 1024000));
+		if('post' == $strMethod){
+			$res = $httpproxy->post($url,$params);
+		}else{
+			$res = $httpproxy->get($url);
+		}
+		$http_code = $httpproxy->http_code();
+		if(200 == $http_code){//正常请求
+			return $res;
+		}else{
+			$err = $httpproxy->errmsg();
+			Bingo_Log::warning("fetch_url_err. [url:$url] [http_code:$http_code] [err:$err]");
+			return false;
+		}
+	}
+snippet zhp_use_fetchurl
+	//$res = self::_fetchRalUrl($strRalServiceName,$strUrl,$arrInput,'post');                                                            
+	$res = self::_fetchUrl($strUrl,$arrInput,'post');                                                            
+	if(false === $res){                                                                                          
+		Bingo_Log::fatal('fetchUrl fail. [res:'.$res.'] [url:'.$strUrl.'] [input:'.serialize($arrInput).']')
+		return $res;                                                                                             
+	}else{                                                                                                       
+		$resDecode = json_decode($res,true);                                                                     
+		if(empty($resDecode)){                                                                                   
+			Bingo_Log::fatal('json_decode fail. [res:'.$res.'] [res_decode:'.$resDecode.']');                    
+		}                                                                                                        
+		return $resDecode;                                                                                       
+	}                                                                                                            
+snippet zhp_fetchralurl
+	private static function _fetchRalUrl($strRalServiceName,$strUrl,$arrInput=array(),$httpMethod='post',$arrExtra=array()){
+
+		$strOut = Tbapi_Core_Midl_Http::httpcall($strRalServiceName, $strUrl, $arrInput, $httpMethod, $arrExtra);
+		if ($strOut != false ) {
+			return $strOut;
+		}else{
+			Bingo_Log::warning("httpcall error[name:".$strRalServiceName."] [url:".$strUrl."] [input:".serialize($arrInput)."] [mehtod:".$httpMethod."] [extra:".serialize($arrExtra)."]");
+			return false;
+		}
+	}
+snippet zhp_page_num_change_to_start
+		//const OFFSET = 20;
+		$intPageNum 	= intval($page_num);
+		$intResNum      = intval($res_num);
+
+		if($intPageNum <= 1){
+			$intPageNum = 1;
+		}
+
+		if($intResNum <= 0){
+			$intResNum = self::OFFSET;
+		}
+
+		$intStart = ($intPageNum-1)*$intResNum;
+		$intOffset = $intStart + $intResNum - 1;
+snippet zhp_input_para_start_filter
+		//const OFFSET = 20;
+		$intStart = intval($arrInput['start']);
+		if(empty($intStart)){
+			        $arrInput['start'] = 0;
+		}
+
+		$intOffset = intval($arrInput['offset']);
+		if(empty($intOffset)){
+			        $arrInput['offset'] = $intStart + self::OFFSET - 1;
+		}
+snippet zhp_json2array
+	$arr = Bingo_String::json2array($str);
+snippet zhp_array2json
+	$str = Bingo_String::array2json($arr);
+snippet zhp_memcache_add
+		$strKey =  self::DEL_KEY_PREFIXZ."_".$tid."_".$pid;
+		$strValue = 1;
+
+		if (is_null(self::_getCache())) {
+			Bingo_Log::warning ("getCache() fail, key : ".serialize($strKey).", value : ".serialize($strValue));
+		} else {
+			$ret = self::$_cache->add($strKey,$strValue,self::EXPIRE_TIME);
+
+			if (0 == $ret) {
+				Bingo_Log::debug("add cache success, key : ".serialize($strKey).",value : ".serialize($strValue));
+			}else{
+				Bingo_Log::warning("add cache fail, ret: ".serialize($ret)." key : ".serialize($strKey).", value : ".serialize($strValue));
+			}
+		}
+snippet zhp_memcache_get
+	$strKey = self::DEL_KEY_PREFIXZ."_".$tid."_".$pid;
+	$ret = 0;
+	if (is_null(self::_getCache())) {
+		Bingo_Log::warning ("getCache() fail, key : ".serialize($strKey).", value : ".serialize($strValue));
+	} else {
+		$ret = self::$_cache->get($strKey);
+		if (empty($ret)) {
+			$ret = 0;
+		} 
+	}
+snippet zhp_newclass
+	class Service_Conf{
+
+		private static function _init(){
+			return true;
+		}
+
+		//method _errRet
+		//Tieba_Errcode::ERR_SUCCESS
+		protected static function _errRet($errno,$errmsg=null,$data=array()){
+			if(null === $errmsg){
+				return array(       
+					'errno' => $errno,
+					'errmsg' => Tieba_Error::getErrmsg($errno),
+					'data'	=> $data,
+				);
+			}else{
+				return array(       
+					'errno' => $errno,
+					'errmsg' => $errmsg,
+					'data'	=> $data,
+				);
+			}
+		}
+
+
+		public function getConfInfo($intConfId)
+		{
+
+			if(!self::_init()){
+				Bingo_Log::warning("self::_init() fail.");
+				return array();
+			}
+
+			$arrConfInfo =  Dl_Conf::getConfInfo($intConfId);
+			if(empty($arrConfInfo)){
+				$errno = Tieba_Errcode::ERROR_MIS_DATA_NOT_EXSITS;
+				return self::_errRet($errno);	
+			}
+
+			return self::_errRet(Tieba_Errcode::ERR_SUCCESS,null,$arrConfInfo);	
+		}		
+
+	}
+snippet zhp_sql_class
+	class Dl_Conf{
+
+		const DATABASE_NAME = "orp_mis";
+
+		const TABLE_NAME_CONF = 'conf';
+		const TABLE_NAME_CONF_ITEM = 'conf_item';
+		const TABLE_NAME_CONF_RECORDER = 'conf_recorder';
+		const TABLE_NAME_CONF_MY_FAVO = 'conf_my_favo';
+
+		//SqlTpl
+		private static $_template = null//move to top of class, add ";" at the end
+		private static $_db = null;
+
+		/**
+		* @brief get mysql obj.
+		* @return: obj of Bd_DB, or null if connect fail.
+		**/		
+		private static function _getDB(){
+
+			if(null === self::$_db){
+
+				$objTbMysql = Tieba_Mysql::getDB(self::DATABASE_NAME);
+				if($objTbMysql && $objTbMysql->isConnected()) {
+					self::$_db = $objTbMysql;
+					return $objTbMysql;
+				} else {
+					Bingo_Log::warning("db connect fail.");
+					return false;
+				}
+
+			}else{
+				return self::$_db;
+			}
+
+		}
+
+
+		/**
+		* @brief init
+		* @return: true if success. false if fail.
+
+		**/		
+		private static function _init(){
+			return true; 
+		}
+
+
+		//method _errRet
+		//Tieba_Errcode::ERR_SUCCESS
+		protected static function _errRet($errno,$errmsg=null,$data){
+			if(null === $errmsg){
+				return array(       
+					'errno' => $errno,
+					'errmsg' => Tieba_Error::getErrmsg($errno),
+					'data'	=> $data,
+				);
+			}else{
+				return array(       
+					'errno' => $errno,
+					'errmsg' => $errmsg,
+					'data'	=> $data,
+				);
+			}
+		}
+
+
+
+		//getSql
+		/**
+		* @brief 拼sql语句
+		*
+		* @param
+		*   $arrInput 调用者的输入参数
+		*   $strTpl SQL模板
+		* @return:
+		*   succ: $strSql
+		*   fail: false
+		**/
+		private static function _getSql($arrInput, $strTpl) {
+		
+			$db = self::_getDB();
+			if( !$db ){
+				Bingo_Log::warning(sprintf('getDB fail while _getSql() return false, SQL[%s] input[%s]', $strTpl, serialize($arrInput)));
+				return false;
+			}
+		
+			$template = self::_getSqlTemplate($db);
+			if(!$template){
+				Bingo_Log::warning(sprintf('getSqlTemplate fail while _getSql() return false, SQL[%s] input[%s]', $strTpl, serialize($arrInput)));
+				return false;
+			}
+		
+			// get sql
+			$template->prepare($strTpl);
+			if ($template->bindParam($arrInput, null, false) === false) {
+				Bingo_Log::warning(sprintf('getSql fail while bindParam() return false, SQL[%s]', $strTpl));
+				return false;
+			}
+			$strSql = $template->getSql();
+			if (null === $strSql) {
+				Bingo_Log::warning(sprintf('getSql fail while _getSql() return false, SQL[%s] input[%s]', $strTpl, serialize($arrInput)));
+				return false;
+			}
+			return $strSql;
+		}
+
+		/**
+		* @brief get sql_template obj.
+		* @return: obj of Bd_Db_SQLTemplate, or null if db connect fail.
+
+		**/		
+		private static function _getSqlTemplate($objTbMysql){
+
+			if(null == self::$_template){
+				if($objTbMysql && $objTbMysql->isConnected()) {
+					self::$_template = new Bd_Db_SQLTemplate($objTbMysql);
+				} else {
+					Bingo_Log::warning("db connect for SqlTemplate fail.");
+					return null;
+				}
+			}
+
+			return self::$_template;
+
+		}
+
+
+
+		public function getConfInfo($intConfId)
+		{
+
+			if(!self::_init()){
+				Bingo_Log::warning("self::_init() fail.");
+				return array();
+			}
+
+			$strSql = 'select conf_id, name, remark, last_text_modify_time, last_text_modify_user, last_publish_pre_time, last_publish_pre_user, last_publish_online_time, last_publish_online_user, publish_lock, publish_user, edit_lock, edit_user from '.self::TABLE_NAME_CONF.' where id = {id:n} ';
+			$arrSqlInput = array('id' => $intConfId);
+			$strSql = self::_getSql($arrSqlInput,$strSqlTpl);
+
+			if(false === $strSql){
+				Bingo_Log::warning(sprintf('getSql fail, SQL[%s] input[%s]', $strSqlTpl, serialize($arrSqlInput)));
+				return array();
+			}
+
+
+			$db = self::_getDB();
+			if( !$db ){
+				Bingo_Log::warning('getDB fail.');
+				return array();
+			}
+
+			//query sql
+			Bingo_Log::debug($strSql);
+			$res = $db->query($strSql);
+			if( false === $res ){
+				Bingo_Log::warning("sql:".$strSql." errno:".$db->errno()."  error:".$db->error());
+				return array();
+			}
+
+			$arrRow= $ret[0];
+
+			return $arrRow;
+		}
+
+
+
+	}
+snippet zhp_fetch_ral_url
+	private static function _fetchUrlWithRalAndGet($strRalServiceName,$strUrl,$arrInput=array(),$arrExtra=array()){
+
+		$strDataQuery = Tbapi_Core_Util_Http::arrayToQueryString($arrInput);      
+
+		if (strpos($strUrl,'?')){                                                
+			$strUrl.='&'.$strDataQuery;                                          
+		}else {                                                                  
+			$strUrl.='?'.$strDataQuery;                                          
+		}                                                                        
+
+		$strOut = camel($strRalServiceName,$strUrl,$arrInput,$arrExtra); 
+		if ($strOut != false ) {
+			return $strOut;
+		}else{
+			Bingo_Log::warning("httpcall error[name:".$strRalServiceName."] [url:".$strUrl."] [input:".serialize($arrInput)."] [extra:".serialize($arrExtra)."]");
+			return false;
+		}
+	}
+snippet zhp_fun_pri
+	/**
+	 * @brief 
+	 *
+	 * @param
+	 *   array $arrInput 
+	 * @return:
+	 *   bol|string  bol|$strSql
+	 **/
+	private static function ${1:functionName}(){
+	}
+snippet zhp_fun_pub
+	/**
+	 * @brief 
+	 *
+	 * @param
+	 *   array $arrInput 
+	 * @return:
+	 *   bol|string  bol|$strSql
+	 **/
+	public static function ${1:functionName}(){
+	}
+snippet zhp_wl
+	//连接ksarch的Wordserver服务
+	//连接的是默认的Wordserver服务, 如果在词表mis中，没有设置过pid,tk,app参数， 则表示该词表使用的是默认的Wordserver服务
+	$handleWordServer = Wordserver_Wordlist::factory();
+
+
+	//根据key获取value -----//
+	$strKey0 = 'testkey0';
+	$strKey1 = 'testkey1';
+	$strTableName = 'table_name';//英文表名
+
+	$arrKeys = array($strKey0,$strKey1);
+	$arrItemInfo = $handleWordServer->getValueByKeys($arrKeys,$strTableName);
+
+
+	$value0 = $arrItemInfo[$strKey0];
+	$value1 = unserialize($arrItemInfo[$strKey1]); //如果在mis后台填的是数组， 这时需要 unserialize() 处理后，转换为数组
+	//----- 根据key获取value//
+snippet zhp_var_dump
+	var_dump(${1:var}__FILE__,__LINE__);
+snippet zhp_wordlist_singleton
+	private static $_wordlist = null;
+	private static function _getWordlist(){
+		if(null == self::$_wordlist){
+			//连接ksarch的Wordserver服务
+			//连接的是默认的Wordserver服务, 如果在词表mis中，没有设置过pid,tk,app参数， 则表示该词表使用的是默认的Wordserver服务
+			$handleWordServer = Wordserver_Wordlist::factory();
+			self::$_wordlist = $handleWordServer;
+		}
+
+
+		return self::$_wordlist;
+	}
+snippet zhp_bingo_log
+	Bingo_Log::warning('====.'.var_export($ret,true));
