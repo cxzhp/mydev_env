@@ -133,6 +133,7 @@ let g:netrw_browse_split = 1
 " jump to
 "nmap ,f [I:let nr = input("Which one: ")<Bar>exe "normal " . nr ."[\t"<CR>
 " use <F6> to toggle line numbers
+imap <C-[> <ESC>
 nmap <silent> <F6> :set number!<CR>
 " page down with <Space>
 nmap <Space> <PageDown>
@@ -190,3 +191,18 @@ colorscheme desert
 "CTRL-N search scope
 "detail help:cpt
 set cpt=.,w,b
+
+
+"NERDTree
+"NERDTree Settings{
+	let NERDTreeWinPos ="left"
+	let NERDTreeShowBookmarks=1
+	let NERDTreeBookmarksFile=$vim.".NERDTreeBookmarks"
+"}
+map <F3> :NERDTreeToggle<CR>
+
+
+"ctags
+map tp :tabp<cr>
+map tn :tabn<cr>
+map ts :tselect<cr>
