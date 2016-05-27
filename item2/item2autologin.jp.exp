@@ -1,0 +1,2 @@
+#!/bin/sh
+ssh -i ~/jackyang-slightech.pem ec2-user@52.68.67.135 
