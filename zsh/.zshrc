@@ -89,11 +89,6 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 
-alias sz="echo 'JackShuai' |pbcopy && ssh slightech@120.24.166.15 -p 222"
-alias wx="echo 'JackShuai' |pbcopy && ssh slightech@code.slightech.com -p 222"
-alias hk="echo 'JackShuai' |pbcopy && ssh slightech@58.96.171.124 -p 222"
-
-
 alias ctags="/usr/local/bin/ctags  -R  --c-kinds=+p"
 
 alias rm=trash 
@@ -101,5 +96,4 @@ trash(){
 	mv $@ ~/.trash/
 }
 
-alias wxip='ping code.slightech.com'
 alias start_tmux='sh /Users/zhp/workspace/tools/mydev_env/tmux/start_tmux.sh'
