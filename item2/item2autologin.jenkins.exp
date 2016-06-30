@@ -1,0 +1,32 @@
+#!/usr/bin/expect
+
+set timeout 30
+spawn ssh [lindex $argv 0]@[lindex $argv 1]
+expect {
+	"(yes/no)?"
+	{send "yes\n";exp_continue}
+	"password:"
+	{send "[lindex $argv 2]\n"}
+}
+
+expect {
+	"slightech" 
+	{send "export LANG='en_US.UTF-8'\nexport LANGUAGE='en_US:en'\nsu\n"}
+}
+
+expect {
+	"Password:"
+	{send "slightech\n"}
+}
+
+expect {
+	"root"
+	{send "su jenkins\n"}
+}
+
+expect {
+	"jenkins"
+	{send "cd\n\n\n"}
+}
+
+interact
