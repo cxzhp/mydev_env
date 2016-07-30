@@ -93,7 +93,22 @@ alias ctags="/usr/local/bin/ctags  -R  --c-kinds=+p"
 
 alias rm=trash 
 trash(){
+	if [ -d ~/.trash/$@ ]; then
+		/bin/rm -rf ~/.trash/$@
+	fi
 	mv $@ ~/.trash/
 }
 
 alias start_tmux='sh /Users/zhp/workspace/tools/mydev_env/tmux/start_tmux.sh'
+alias imgcat='/Users/zhp/workspace/tools/mydev_env/item2/imgcat'
+alias codes='cd ~/workspace/slightech/codes'
+
+test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+
+
+#open ji_tang
+cd /Users/zhp/workspace/mede/each_day/100  && sh read.sh && cd ~
+
+#auto push docs
+cd ~/workspace/docs && sh autopush.sh > /dev/null 2>/dev/null  1>/dev/null  &>/devnull
+cd -

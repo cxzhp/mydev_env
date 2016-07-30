@@ -2,6 +2,64 @@
 " MAIN CUSTOMIZATION FILE
 "
 
+"""""""""""""""
+"vundle
+set nocompatible              " be iMproved, required
+filetype off                  " required
+"
+"" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+" alternatively, pass a path where Vundle should install plugins
+"call vundle#begin('~/some/path/here')
+
+" let Vundle manage Vundle, required
+Plugin 'VundleVim/Vundle.vim'
+
+" The following are examples of different formats supported.
+" Keep Plugin commands between vundle#begin/end.
+" plugin on GitHub repo
+Plugin 'tpope/vim-fugitive'
+" plugin from http://vim-scripts.org/vim/scripts.html
+Plugin 'L9'
+" Git plugin not hosted on GitHub
+Plugin 'git://git.wincent.com/command-t.git'
+" git repos on your local machine (i.e. when working on your own plugin)
+" Plugin 'file:///home/gmarik/path/to/plugin'
+" The sparkup vim script is in a subdirectory of this repo called vim.
+" Pass the path to set the runtimepath properly.
+Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
+" Install L9 and avoid a Naming conflict if you've already installed a
+" different version somewhere else.
+Plugin 'ascenator/L9', {'name': 'newL9'}
+
+
+
+"markdown
+"https://github.com/plasticboy/vim-markdown/
+Plugin 'godlygeek/tabular'
+Plugin 'plasticboy/vim-markdown'
+
+" All of your Plugins must be added before the following line
+call vundle#end()            " required
+filetype plugin indent on    " required
+" To ignore plugin indent changes, instead use:
+filetype plugin on
+""
+"" Brief help
+"" :PluginList       - lists configured plugins
+"" :PluginInstall    - installs plugins; append `!` to update or just
+"":PluginUpdate
+"" :PluginSearch foo - searches for foo; append `!` to refresh local cache
+"" :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
+""
+"" see :h vundle for more details or wiki for FAQ
+"" Put your non-Plugin stuff after this line
+""
+"""""""""""""""
+
+
+
 " Enable loading filetype and indentation plugins
 filetype plugin on
 filetype indent on
@@ -24,9 +82,11 @@ set backspace=indent,eol,start
 set completeopt=menu,longest,preview
 
 " Use UTF-8 as the default buffer encoding
-set enc=gb2312
+"set enc=gb2312
+set enc=utf-8
 "编码设置
-set tenc=gb2312
+"set tenc=gb2312
+set tenc=utf-8
 
 " Remember up to 100 'colon' commmands and search patterns
 set history=100
@@ -85,7 +145,7 @@ set updatecount=50
 "
 " '20  - remember marks for 20 previous files
 " \"50 - save 50 lines for each register
-" :20  - remember 20 items in command-line history 
+" :20  - remember 20 items in command-line history
 " %    - remember the buffer list (if vim started without a file arg)
 " n    - set name of viminfo file
 set viminfo='20,\"50,:20,%,n~/.viminfo
@@ -138,14 +198,14 @@ nmap <silent> <F6> :set number!<CR>
 " page down with <Space>
 nmap <Space> <PageDown>
 " open filename under cursor in a new window (use current file's working
-" directory) 
+" directory)
 nmap gf :new %:p:h/<cfile><CR>
 " map <Alt-p> and <Alt-P> to paste below/above and reformat
 nnoremap <Esc>P  P'[v']=
 nnoremap <Esc>p  p'[v']=
 " visual shifting (does not exit Visual mode)
 vnoremap < <gv
-vnoremap > >gv 
+vnoremap > >gv
 
 " Generic highlight changes
 "highlight Comment cterm=none ctermfg=Gray
@@ -184,9 +244,9 @@ nmap <silent> <F5> :r! date +"by Zhp \%F \%T"<CR>
 "color scheme
 colorscheme desert
 
-"let g:miniBufExplMapCTabSwitchBufs=1 
-"let g:miniBufExplMapWindowsNavVim=1 
-"let g:miniBufExplMapWindowNavArrows=1 
+"let g:miniBufExplMapCTabSwitchBufs=1
+"let g:miniBufExplMapWindowsNavVim=1
+"let g:miniBufExplMapWindowNavArrows=1
 
 "CTRL-N search scope
 "detail help:cpt
