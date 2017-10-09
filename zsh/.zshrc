@@ -101,14 +101,22 @@ trash(){
 
 alias start_tmux='sh /Users/zhp/workspace/tools/mydev_env/tmux/start_tmux.sh'
 alias imgcat='/Users/zhp/workspace/tools/mydev_env/item2/imgcat'
-alias codes='cd ~/workspace/slightech/codes'
+alias cdcoding='cd /Users/zhp/workspace/slightech/codes/orb-slam2-android/oRB_SLAM2_Android/src/main/jni/ORB_SLAM2'
+alias cc='cd /Users/zhp/workspace/slightech/codes/slam_gmapping'
+alias mtr='/usr/local/sbin/mtr'
+alias tips='cat /Users/zhp/workspace/tools/mydev_env/tips'
 
+
+alias emacs='emacs -nw'
+alias orgs='cd /Users/zhp/workspace/docs/orgs && emacs -nw index.org'
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
 
 #open ji_tang
-cd /Users/zhp/workspace/mede/each_day/100  && sh read.sh && cd ~
+cd /Users/zhp/workspace/0mede/each_day/100  && sh read.sh && cd ~
 
 #auto push docs
-cd ~/workspace/docs && sh autopush.sh > /dev/null 2>/dev/null  1>/dev/null  &>/devnull
+cd ~/workspace/docs && sh autopush.sh
 cd -
+echo "cd ~/workspace/tools/mydev_env/redmine && sh load.sh "
+
