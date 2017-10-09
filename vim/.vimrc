@@ -260,6 +260,7 @@ set cpt=.,w,b
 	let NERDTreeBookmarksFile=$vim.".NERDTreeBookmarks"
 "}
 map <F3> :NERDTreeToggle<CR>
+nnoremap <F4> :e %:p:s,.h$,.X123X,:s,.cpp$,.h,:s,.X123X$,.cpp,<CR>
 
 
 "ctags
