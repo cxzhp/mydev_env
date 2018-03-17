@@ -267,3 +267,7 @@ nnoremap <F4> :e %:p:s,.h$,.X123X,:s,.cpp$,.h,:s,.X123X$,.cpp,<CR>
 map tp :tabp<cr>
 map tn :tabn<cr>
 map ts :tselect<cr>
+
+
+"set *.launch syntax on like xml
+au! BufRead,BufNewFile *.launch set filetype=xml
